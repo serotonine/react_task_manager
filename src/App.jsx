@@ -1,0 +1,172 @@
+import SideBar from "./components/SideBar";
+import NoProject from "./components/NoProject";
+import AddProject from "./components/AddProject";
+import Project from "./components/Project";
+import { useState, useEffect } from "react";
+import { nanoid } from "nanoid";
+
+function App() {
+  const [componentDisplay, setComponentDisplay] = useState(undefined);
+  const [projects, setProjects] = useState({
+   items: [],
+  });
+  const [selectedProject, setSelectedProject] = useState(undefined);
+  // Populate project if is localStorage.
+  useEffect(() => {
+    //console.log("useEffect to localStorage");
+    if (projects.items.length === 0) {
+      // Check localStorage.
+      const saved = window.localStorage.getItem("projects");
+      if (saved) {
+        // console.log("localStorage.getItem(projects) exists");
+        const data = JSON.parse(saved);
+        // Fix React.strict mode side Effect.
+        if (JSON.stringify(data) !== JSON.stringify(projects)) {
+          setProjects(data);
+        }
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("useEffect => projects", projects.items);
+    if (projects.items.length === 0 || selectedProject=== undefined) {
+      setComponentDisplay(0);
+    } 
+      window.localStorage.setItem("projects", JSON.stringify(projects));
+    
+  }, [projects]);
+
+  // ========== DISPLAY MARKUP ========== //
+  function switchComponentDisplay(id) {
+    setComponentDisplay(id);
+  }
+  // ========== CRUD ========== //
+  // Projects.
+  /* Add Project. */
+  function onAddProject(data) {
+    data.tasks = [];
+    setSelectedProject(data);
+    setProjects((prev) => {
+     const updatedProjects ={
+      ...prev,
+      items: [...prev.items, data]
+    } 
+    return updatedProjects;
+    });
+    switchComponentDisplay(2);
+  }
+  /* Delete project */
+  function onDeleteProject(e){
+    const projectId = e.target.dataset.id;
+    setSelectedProject(undefined);
+    switchComponentDisplay(0);
+    setProjects((prev) => {
+      const updatedProjects = prev.items.filter((item) => item.id !== projectId);
+      return {...prev, items:[...updatedProjects]}
+    })
+  }
+
+  /* Select Project. */
+  function getSelectedProject(id) {
+    const data = projects.items.find((item) => item.id === id);
+    setSelectedProject(data);
+    switchComponentDisplay(2);
+  }
+
+  function onSelectProject(e) {
+    e.preventDefault();
+    getSelectedProject(e.target.dataset.cta);
+  }
+ // Tasks.
+ /* Add Task. */
+ function onAddTask(task) {
+  /* Enhanced with IA. */
+  // New task id.
+  const id = nanoid(5);
+
+  /* 
+   * useState update is asynchronous.
+   * so we have to make calculation inside the setProjects callback.
+   * In oredr to be sure that both projects & selectedProject updates are synchrone.
+  */
+
+  setProjects((prev) => {
+    // Select the selectedProject in the projects.item array.
+    const updatedProjects = prev.items.map((project) => {
+      if (project.id === selectedProject.id) {
+        // Update tasks array of the selectedProject object of the projects.item array.
+        const updatedProject = {
+          ...project,
+          tasks: [...(project.tasks || []), { id, task }], // Nice way to handle the empty array case.
+        };
+        // Then update first the selectedProject.
+        setSelectedProject(updatedProject);
+        // Map loop return if current project === selectedProject.
+        return updatedProject;
+      }
+      // Else return project.
+      return project;
+    });
+    // The final value. setProjects({ ...prev, items: updatedProjects });
+    return { ...prev, items: updatedProjects };
+  });
+}
+
+  /* Delete Task. */
+  function onDeleteTask(e) {
+     /* Enhanced with IA. */
+  // Selected Task id.
+  const taskId = e.target.dataset.id;
+  /* 
+   * useState update is asynchronous.
+   * so we have to make calculation inside the setProjects callback.
+  */
+  setProjects((prev) => {
+    // Loop into the current projects.
+    const updatedProjects = prev.items.map((project) => {
+      // Select the selected project in the projects.item array.
+      if (project.id === selectedProject.id) {
+        // Inside the selected project select the remaining tasks.
+        const updatedTasks = project.tasks.filter((t) => t.id !== taskId);
+        // Finally set the current project with new values.
+        const updatedProject = { ...project, tasks: updatedTasks };
+        // Then set the updated project to the selected project before updating the projects.
+        setSelectedProject(updatedProject);
+        // If the map loop's current project === selectProject => return updated project.
+        return updatedProject;
+      }
+      // Else return the project.
+      return project;
+    });
+
+    return { ...prev, items: updatedProjects };
+  });
+}
+
+  return (
+    <div className="main-content grid grid-cols-[20vw_80vw] h-100vh bg-slate-100">
+      <SideBar
+        projects={projects}
+        createProject={() => switchComponentDisplay(1)}
+        selectProject={onSelectProject}
+      />
+      <main className="p-6">
+        {componentDisplay == 0 && (
+          <NoProject createProject={() => switchComponentDisplay(1)} />
+        )}
+        {componentDisplay == 1 && <AddProject handleSaveProject={onAddProject} />}
+        {componentDisplay == 2 && (
+          <Project
+            project={selectedProject}
+            deleteProject={onDeleteProject}
+            addTask={onAddTask}
+            deleteTask={onDeleteTask}
+          />
+        )}
+      </main>
+    </div>
+  );
+}
+
+export default App;
