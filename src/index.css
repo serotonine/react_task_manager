@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-slate-50 text-slate-900;
+  
+}
+html * {
+  font-family: "Helvetica Neue", Arial,  sans-serif;
+}
+h1{
+  @apply font-medium text-4xl;
+}
+h2{
+  @apply font-medium text-2xl;
+}
+h3{
+  @apply font-medium text-xl;
+}

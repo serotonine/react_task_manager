@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect => projects", projects.items);
+    // console.log("useEffect => projects", projects.items);
     if (projects.items.length === 0 || selectedProject=== undefined) {
       setComponentDisplay(0);
     } 
@@ -70,8 +70,12 @@ function App() {
   /* Select Project. */
   function getSelectedProject(id) {
     const data = projects.items.find((item) => item.id === id);
-    setSelectedProject(data);
-    switchComponentDisplay(2);
+    
+    if(data){
+      setSelectedProject(data);
+      switchComponentDisplay(2);
+    }
+   
   }
 
   function onSelectProject(e) {
@@ -145,27 +149,40 @@ function App() {
 }
 
   return (
-    <div className="main-content grid grid-cols-[20vw_80vw] h-100vh bg-slate-100">
-      <SideBar
-        projects={projects}
-        createProject={() => switchComponentDisplay(1)}
-        selectProject={onSelectProject}
-      />
-      <main className="p-6">
-        {componentDisplay == 0 && (
-          <NoProject createProject={() => switchComponentDisplay(1)} />
-        )}
-        {componentDisplay == 1 && <AddProject handleSaveProject={onAddProject} />}
-        {componentDisplay == 2 && (
-          <Project
-            project={selectedProject}
-            deleteProject={onDeleteProject}
-            addTask={onAddTask}
-            deleteTask={onDeleteTask}
-          />
-        )}
+    <>
+    
+    <div className="main-content">
+      <header className="main-header">
+      <nav className="main-header__wrapper flex">
+        <div className="logo"><h3>Task Manager</h3></div>
+         <div className="profile"><p><small>Serotonine</small></p></div>
+       </nav>
+    </header>
+      <div className="main-content__wrapper flex lg:w-[900px] bg-transparent m-auto py-12"  >
+        <SideBar
+          projects={projects}
+          createProject={() => switchComponentDisplay(1)}
+          selectProject={onSelectProject}
+          selectedProject={selectedProject}
+        />
+        <main className="pl-6 flex-1">
+          {componentDisplay == 0 && (
+            <NoProject createProject={() => switchComponentDisplay(1)} />
+          )}
+          {componentDisplay == 1 && <AddProject handleSaveProject={onAddProject} />}
+          {componentDisplay == 2 && (
+            <Project
+              project={selectedProject}
+              deleteProject={onDeleteProject}
+              addTask={onAddTask}
+              deleteTask={onDeleteTask}
+            />
+          )}
+      
       </main>
+      </div>
     </div>
+    </>
   );
 }
 

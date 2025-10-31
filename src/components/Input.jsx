@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-
+import "../styles/input.css";
 const Input = forwardRef(function Input(
   { id, label, isTextArea=false, type = "text" },
   ref

@@ -1,15 +1,23 @@
-import logo from "../assets/no-projects.png";
 import Button from "./Button";
-export default function NoProject({createProject}){
- 
-  return(
+import NoImage from "./NoImage";
+
+export default function NoProject({ createProject }) {
+  return (
     <section>
-      <h2 className="text-2xl">No Project</h2>
-      {/* <img src={logo} alt="No project" /> */}
-      <Button 
-      label="Create a project" 
-      btnClass="btn-positif"
-      handleClick={createProject}/>
+<header className="flex justify-between items-center py-6 border-b border-b-slate-300">
+        <h1 className="">No Project</h1>
+        <Button
+          label="New Project"
+          btnClass="btn-green"
+          handleClick={createProject}
+        />
+  
+</header>
+      <div className="py-6">
+        <p>Please select a project or create a new one.</p>
+        
+      </div>
+      <NoImage />
     </section>
   );
 }

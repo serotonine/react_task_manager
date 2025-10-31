@@ -1,0 +1,6 @@
+input, textarea {
+  @apply w-[50ch] pl-2 bg-white border border-slate-300 rounded-sm focus-visible:outline-2 focus-visible:outline-sky-200/50 focus-visible:outline-offset-2;
+}
+label {
+@apply text-sm;
+}

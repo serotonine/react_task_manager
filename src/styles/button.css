@@ -1,0 +1,19 @@
+.btn {
+  @apply text-sm py-2 px-4 rounded transition-colors;
+}
+
+.btn-neutral {
+  @apply bg-slate-50/0 border outline-offset-2 outline-4 outline-slate-100 border-slate-300 text-slate-800 hover:bg-white
+}
+
+.btn-green {
+  @apply hover:text-green-800 hover:border-green-800;
+}
+
+.btn-red {
+  @apply hover:text-orange-600 hover:border-orange-800;
+}
+
+.btn_croce {
+  @apply font-medium hover:text-orange-800;
+}

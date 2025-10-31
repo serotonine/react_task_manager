@@ -1,0 +1,4 @@
+.task{
+  @apply py-3 pl-6 pr-4 bg-white rounded-lg flex justify-between items-center w-full border border-slate-100;
+  background: linear-gradient(to right, theme('colors.orange.300') 0.5rem, theme('colors.white') 0.5rem);
+}
