@@ -1,6 +1,7 @@
-input, textarea {
-  @apply w-[50ch] pl-2 bg-white border border-slate-300 rounded-sm focus-visible:outline-2 focus-visible:outline-sky-200/50 focus-visible:outline-offset-2;
+
+.tm_input, .tm_textarea {
+  @apply w-full lg:w-[50ch] p-2 bg-white border border-slate-300 rounded-md focus-visible:outline-2 focus-visible:outline-sky-200/50 focus-visible:outline-offset-2 placeholder-opacity-5;
 }
 label {
-@apply text-sm;
+@apply text-sm block;
 }

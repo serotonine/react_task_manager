@@ -1,0 +1,7 @@
+.todoist{
+  @apply bg-slate-50 max-lg:w-full max-lg:aspect-square lg:flex-1 mr-6;
+  background-image :url("../assets/todoist.webp");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}

@@ -1,6 +1,0 @@
-.tasks__dialog{
-  @apply rounded-md p-6 aspect-square;
-  &::backdrop{
-    @apply bg-slate-900/80;
-  }
-}

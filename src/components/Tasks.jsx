@@ -1,10 +1,9 @@
-import "../styles/tasks.css"
+import "../styles/dialog-tasks.css"
 import Input from "./Input";
 import Button from "./Button";
 import Task from "./Task";
-import noImage from "./NoImage";
-import { useRef, useState } from "react";
-import NoImage from "./NoImage";
+import { useRef } from "react";
+import Image from "./Image";
 
 export default function Tasks({projectTasks, addTask, onDeleteTask }){
 const newTask = useRef();
@@ -35,18 +34,19 @@ function getTasks(){
 
   return (
     <>
-      <section className="pt-6">
+      <section className="flex flex-col h-full pt-6 flex-1">
        <header className="pb-3 mb-6 flex justify-between items-end border-b border-b-slate-300">
           { projectTasks && projectTasks.length > 0 ? <h2>Tasks</h2>: <h2>No Tasks</h2> }
-          <Button label="New task" handleClick={openDialog} />
+          <Button btnClass="btn-green" label="Create task" handleClick={openDialog} />
        </header>
-      { projectTasks && projectTasks.length > 0 ?  getTasks() : <NoImage /> }
+      { projectTasks && projectTasks.length > 0 ?  getTasks() : <Image/> }
       </section>
       <dialog className="tasks__dialog" ref={dialog}>
-        <form ref={dialogForm}>
-          <Button class="invisible" label="X" handleClick={closeDialog}/>
-          <Input label="Create new task" ref={newTask}/>
-          <Button btnClass="croce" label="Save" handleClick={saveTask}/>
+        <Button btnClass="btn-close" label="X" handleClick={closeDialog}/>
+        <h2>Create Task</h2>
+        <form ref={dialogForm} className="flex flex-col gap-4 items-end">
+          <Input label="Description" ref={newTask}/>
+          <Button btnClass="btn-green"label="Save" handleClick={saveTask}/>
         </form>
       </dialog>
     </>

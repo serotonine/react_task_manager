@@ -18,3 +18,24 @@ h2{
 h3{
   @apply font-medium text-xl;
 }
+
+/* ====== Custom classes ====== */
+
+.tm_header-bottom{ 
+  @apply border-b border-b-slate-300 pb-6;
+}
+ /* Media spacing */
+ .tm_padding-wrap{
+  @apply px-6 xs:px-16 lg:px-0;
+ }
+ /* Flex stuff */
+ .tm_flex-jb-ic {
+  @apply flex justify-between items-center;
+ }
+ /* Media display */
+ .display-small{
+  @apply lg:hidden;
+ }
+ .display-large{
+  @apply max-lg:hidden;
+ }

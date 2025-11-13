@@ -6,13 +6,13 @@ const Input = forwardRef(function Input(
 ) {
   return (
     <div className="mt-4">
-      <label htmlFor={id} className="block">
+      <label htmlFor={id}>
         {label}
       </label>
       {isTextArea ? (
-        <textarea name={id} id={id} ref={ref} required ></textarea>
+        <textarea className="tm_textarea" name={id} id={id} ref={ref} rows="4" cols="50" required  ></textarea>
       ) : (
-        <input type={type} name={id} id={id} ref={ref} required autoComplete="on"/>
+        <input className="tm_input" type={type} name={id} id={id} ref={ref} required autoComplete="on"/>
       )}
     </div>
   );

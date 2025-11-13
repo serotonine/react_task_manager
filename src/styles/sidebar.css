@@ -1,0 +1,6 @@
+.sidebar__projects{
+  @apply max-lg:hidden max-lg:h-0 transition-all;
+  &.active{
+    @apply block h-auto;
+  }
+}

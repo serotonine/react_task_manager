@@ -1,0 +1,11 @@
+.tasks__dialog{
+  @apply rounded-md py-12 px-6  border border-slate-700;
+  &::backdrop{
+    @apply bg-slate-800/70;
+  }
+}
+.tasks__dialog > .btn-close {
+    position:absolute;
+    top:0;
+    right: 0;
+  }

@@ -1,23 +1,21 @@
 import Button from "./Button";
-import NoImage from "./NoImage";
+import Image from "./Image";
 
 export default function NoProject({ createProject }) {
   return (
-    <section>
-<header className="flex justify-between items-center py-6 border-b border-b-slate-300">
+    <section className="flex flex-col h-full">
+<header className="tm_flex-jb-ic tm_header-bottom pb-6">
         <h1 className="">No Project</h1>
         <Button
-          label="New Project"
-          btnClass="btn-green"
+          label="Create Project"
+          btnClass="btn-green display-large"
           handleClick={createProject}
         />
-  
 </header>
       <div className="py-6">
         <p>Please select a project or create a new one.</p>
-        
       </div>
-      <NoImage />
+      <Image />
     </section>
   );
 }

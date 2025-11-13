@@ -56,6 +56,10 @@ function App() {
     });
     switchComponentDisplay(2);
   }
+  /* Cancel project */
+  function onCancelProject(){
+    switchComponentDisplay(0);
+  }
   /* Delete project */
   function onDeleteProject(e){
     const projectId = e.target.dataset.id;
@@ -150,26 +154,38 @@ function App() {
 
   return (
     <>
-    
-    <div className="main-content">
-      <header className="main-header">
-      <nav className="main-header__wrapper flex">
-        <div className="logo"><h3>Task Manager</h3></div>
-         <div className="profile"><p><small>Serotonine</small></p></div>
+    <div className="main-content lg:h-lvh flex flex-col">
+      <header className="main-header tm_header-bottom">
+      <nav className="main-header__wrapper flex justify-between items-center px-[5%] pt-6">
+        <div className="logo tm_flex-jb-ic gap-2">
+          <figure className="h-8 w-8 bg-transparent">
+            <img className="object-cover object-center" src="src/assets/logo.svg" alt="profile" />
+          </figure>
+          <h3>Task Manager</h3>
+          </div>
+         <div className="profile tm_flex-jb-ic gap-2">
+          <p className="display-large"><small>Serotonine</small></p>
+           <figure className=" h-8 w-8 bg-yellow-500 border border-white rounded-full overflow-hidden">
+            <img className="object-cover object-center" src="src/assets/profile_ondine.svg" alt="profile" />
+          </figure>
+          </div>
        </nav>
     </header>
-      <div className="main-content__wrapper flex lg:w-[900px] bg-transparent m-auto py-12"  >
+      <div className="main-content__wrapper flex flex-col lg:flex-row max-lg:pb-6 lg:py-12 flex-1 lg:w-[900px] lg:m-auto"  >
         <SideBar
           projects={projects}
           createProject={() => switchComponentDisplay(1)}
           selectProject={onSelectProject}
           selectedProject={selectedProject}
         />
-        <main className="pl-6 flex-1">
+        <main className="px-6 xs:px-16 max-lg:mt-6 lg:pr-0 lg:pl-6 flex-1">
           {componentDisplay == 0 && (
             <NoProject createProject={() => switchComponentDisplay(1)} />
           )}
-          {componentDisplay == 1 && <AddProject handleSaveProject={onAddProject} />}
+          {componentDisplay == 1 && <AddProject 
+          handleSaveProject={onAddProject}
+          handleCancelProject={onCancelProject}
+          />}
           {componentDisplay == 2 && (
             <Project
               project={selectedProject}

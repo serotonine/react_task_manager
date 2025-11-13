@@ -1,19 +1,32 @@
 .btn {
-  @apply text-sm py-2 px-4 rounded transition-colors;
+  @apply text-sm py-2 px-4 rounded border outline-offset-2 outline-4 transition-colors;
 }
 
 .btn-neutral {
-  @apply bg-slate-50/0 border outline-offset-2 outline-4 outline-slate-100 border-slate-300 text-slate-800 hover:bg-white
+  @apply bg-slate-50/0  outline-slate-100 border-slate-300 text-slate-800 hover:bg-white
 }
 
 .btn-green {
-  @apply hover:text-green-800 hover:border-green-800;
+  @apply text-green-800 border-green-800 hover:bg-green-800 hover:text-white;
 }
 
 .btn-red {
-  @apply hover:text-orange-600 hover:border-orange-800;
+  @apply text-slate-500 border-orange-800 hover:bg-orange-800 hover:text-white;
+}
+.btn-negatif{
+    @apply bg-slate-50;
+}
+.btn-burger{
+  @apply h-6 w-6 border-none;
+  background-image: url("../assets/burger_off.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  &.active {
+    background-image: url("../assets/burger_on.svg");
+  }
 }
 
-.btn_croce {
-  @apply font-medium hover:text-orange-800;
+.btn-close {
+  @apply font-medium py-5 px-6 text-2xl border-none hover:text-orange-800;
 }

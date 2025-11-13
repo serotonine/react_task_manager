@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_x30_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 594.8 500">
+  <!-- Generator: Adobe Illustrator 29.8.3, SVG Export Plug-In . SVG Version: 2.1.1 Build 3)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #3c6300;
+      }
+
+      .st1 {
+        fill: #ca3500;
+      }
+
+      .st2 {
+        fill: #fdc700;
+      }
+    </style>
+  </defs>
+  <rect class="st0" x="73.2" y="73.2" width="353.6" height="353.6" transform="translate(250 -103.6) rotate(45)"/>
+  <rect class="st2" x="168" y="73.2" width="353.6" height="353.6" transform="translate(277.8 -170.6) rotate(45)"/>
+  <circle class="st1" cx="344.8" cy="250" r="46.7"/>
+</svg>

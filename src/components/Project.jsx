@@ -5,13 +5,15 @@ export default function Project({project, deleteProject, addTask, deleteTask}){
   const {id,title, deadline, description, tasks} = project;
   
   return(
-    <article>
+    <article className="flex flex-col h-full">
       <header className="pb-3">
-         <Button
-        label="Delete project"
-        handleClick={deleteProject}
-        id={id}
-         />
+           <Button
+          label="Delete Project"
+          btnClass="btn-red ml-auto"
+          handleClick={deleteProject}
+          id={id}
+           />
+           
         <h1 className="pt-6 pb-3">{title}</h1>
         <hr className="w-28 border-2 border-orange-300"/>   
       </header>
