@@ -28,7 +28,7 @@ export default function SideBar({projects, selectedProject, createProject, selec
           const active = (selectedProject && project.id == selectedProject.id) ? true : false;
           const activeClasses = active ? "bg-white text-inherit" : "text-slate-600";
           return (
-          <p key={project.id} onClick={selectProject} data-cta={project.id} className={`tm_padding-wrap border-b transition-colors hover:bg-white hover:text-inherit cursor-pointer ${activeClasses}`}>
+          <p key={project.id} onClick={selectProject} data-cta={project.id} className={`tm_padding-wrap lg:pl-2 border-b transition-colors hover:bg-white hover:text-inherit cursor-pointer ${activeClasses}`}>
             <span className={`h-2 w-2 rounded-full bg-orange-300 inline-block mr-2 `}></span>
             <a className="inline-block py-3" data-cta={project.id} href="#" >{project.title}</a>
           </p>
