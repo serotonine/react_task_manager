@@ -96,7 +96,7 @@ function App() {
   /* 
    * useState update is asynchronous.
    * so we have to make calculation inside the setProjects callback.
-   * In oredr to be sure that both projects & selectedProject updates are synchrone.
+   * In order to be sure that both projects & selectedProject updates are synchrone.
   */
 
   setProjects((prev) => {
@@ -159,14 +159,14 @@ function App() {
       <nav className="main-header__wrapper flex justify-between items-center px-[5%] pt-6">
         <div className="logo tm_flex-jb-ic gap-2">
           <figure className="h-8 w-8 bg-transparent">
-            <img className="object-cover object-center" src="src/assets/logo.svg" alt="profile" />
+            <img className="object-cover object-center" src="./assets/logo.svg" alt="profile" />
           </figure>
           <h3>Task Manager</h3>
           </div>
          <div className="profile tm_flex-jb-ic gap-2">
           <p className="display-large"><small>Serotonine</small></p>
            <figure className=" h-8 w-8 bg-yellow-500 border border-white rounded-full overflow-hidden">
-            <img className="object-cover object-center" src="src/assets/profile_ondine.svg" alt="profile" />
+            <img className="object-cover object-center" src="./assets/profile_ondine.svg" alt="profile" />
           </figure>
           </div>
        </nav>
