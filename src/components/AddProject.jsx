@@ -1,9 +1,11 @@
+import {TaskManagerContext} from "../store/task-manager-context.jsx";
 import Input from "./Input";
 import Button from "./Button";
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import { nanoid } from "nanoid";
-export default function AddProject({ handleSaveProject, handleCancelProject }) {
+export default function AddProject() {
   const form = useRef();
+  const { addProject, switchComponentDisplay } = useContext(TaskManagerContext);
 
   // Events.
   function saveProject(e) {
@@ -22,12 +24,13 @@ export default function AddProject({ handleSaveProject, handleCancelProject }) {
         [element.id]: element.value,
       };
     }
-    handleSaveProject(data);
+    addProject(data);
   }
+  
   function cancelProject(e) {
     e.preventDefault();
     form.current.reset();
-    handleCancelProject();
+    switchComponentDisplay(0);
  }
 
   return (

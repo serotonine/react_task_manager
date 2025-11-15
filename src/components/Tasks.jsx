@@ -1,14 +1,17 @@
-import "../styles/dialog-tasks.css"
+import "../styles/dialog-tasks.css";
+import { useTaskManager } from "../store/task-manager-context";
 import Input from "./Input";
 import Button from "./Button";
 import Task from "./Task";
 import { useRef } from "react";
 import Image from "./Image";
 
-export default function Tasks({projectTasks, addTask, onDeleteTask }){
+export default function Tasks({projectTasks, }){
 const newTask = useRef();
 const dialog = useRef();
 const dialogForm = useRef();
+// useContext(TaskManagerContext).
+  const {addTask, deleteTask } = useTaskManager();
 // Event.
 function closeDialog(){
   dialog.current.close();
@@ -26,7 +29,7 @@ function saveTask(e){
 function getTasks(){
   return (
     <ul className="space-y-6">
-       { projectTasks.map((item) => (<Task key={item?.id} label={item.task} onDeleteTask={onDeleteTask} id={item?.id} />))}
+       { projectTasks.map((item) => (<Task key={item?.id} label={item.task} onDeleteTask={deleteTask} id={item?.id} />))}
     </ul>
    
   );

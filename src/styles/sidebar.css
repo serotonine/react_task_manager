@@ -1,6 +1,16 @@
+.sidebar{
+  @apply bg-transparent max-lg:mb-6 max-lg:bg-slate-100 max-lg:pt-6 lg:pr-6 lg:border-r border-r-slate-300 lg:min-w-72;
+}
+.sidebar__header{
+  @apply max-lg:justify-start max-lg:gap-3 lg:pl-3;
+}
+
 .sidebar__projects{
   @apply max-lg:hidden max-lg:h-0 transition-all;
   &.active{
     @apply block h-auto;
   }
+}
+.sidebar__project{
+  @apply border-b transition-colors hover:bg-white hover:text-inherit cursor-pointer lg:pl-2 px-6 xs:px-16;
 }
