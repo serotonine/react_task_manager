@@ -1,10 +1,18 @@
-import Button from "./Button";
 import "../styles/task.css";
-export default function Task({label, id, onDeleteTask}){
+import { useTaskManager } from "../store/task-manager-context";
+import Button from "./Button";
 
-  return(
+export default function Task({ label, id }) {
+  // TaskManagerContext.
+  const { deleteTask } = useTaskManager();
+  return (
     <li className="task">
-      <p>{label}</p> <Button btnClass="btn-red" label="Delete" handleClick={onDeleteTask} id={id} />
+      <p>{label}</p>{" "}
+      <Button
+        btnClass="btn-red btn-small"
+        label="Delete"
+        handleClick={() => deleteTask(id)}
+      />
     </li>
   );
 }
