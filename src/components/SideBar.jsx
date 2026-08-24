@@ -28,7 +28,7 @@ export default function SideBar({createProject }) {
           <h3 className="ml-2">Projects</h3>
         </div>)}
         <h2 className="display-large">Projects</h2>
-         { projects.items.length === 0 && (
+         { (projects.items.length === 0 || !selectedProject) && (
           <Button
             label="New project"
             btnClass="btn-green lg:hidden"
