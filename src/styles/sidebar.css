@@ -12,5 +12,13 @@
   }
 }
 .sidebar__project{
-  @apply border-b transition-colors hover:bg-white hover:text-inherit cursor-pointer lg:pl-2 px-6 xs:px-16;
+  @apply text-slate-600 border-b transition-colors cursor-pointer lg:px-2 px-6 xs:px-16 flex justify-between items-center;
+  &.active{
+    @apply bg-white text-inherit;
+
+  }
 }
+.sidebar__project:not(.active){
+      @apply hover:bg-white hover:text-inherit hover:bg-opacity-30;
+
+  }

@@ -61,10 +61,8 @@ export default function TaskManagerContextProvider({ children }) {
 
   // Select Project.
   function selectProject(id) {
-    console.log("getSelectedProject id", id);
     const project = projects.items.find((item) => item.id === id);
     if (project) {
-      console.log("getSelectedProject project", project);
       setSelectedProject(project);
       setComponentDisplay(2);
     }
@@ -74,7 +72,6 @@ export default function TaskManagerContextProvider({ children }) {
     console.log("addProject");
     data.tasks = [];
     setSelectedProject(data);
-    console.log("addProject setSelectedProject", selectedProject);
     setProjects((prev) => {
       const updatedProjects = {
         ...prev,
@@ -86,7 +83,10 @@ export default function TaskManagerContextProvider({ children }) {
   }
   // Delete project.
   function deleteProject(projectId) {
+   console.log("deleteProject: selected project", selectedProject);
+
     setSelectedProject(undefined);
+    console.log("deleteProject: selected project", selectedProject);
     switchComponentDisplay(0);
     setProjects((prev) => {
       const updatedProjects = prev.items.filter(

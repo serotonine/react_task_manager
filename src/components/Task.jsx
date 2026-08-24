@@ -7,7 +7,7 @@ export default function Task({label, id}){
     const {deleteTask } = useTaskManager();
   return(
     <li className="task">
-      <p>{label}</p> <Button btnClass="btn-red" label="Delete" handleClick={() => deleteTask(id)}/>
+      <p>{label}</p> <Button btnClass="btn-red btn-small" label="Delete" handleClick={() => deleteTask(id)}/>
     </li>
   );
 }

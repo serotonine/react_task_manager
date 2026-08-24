@@ -15,8 +15,8 @@ export default function Project({ addTask, deleteTask }) {
     <article className="flex flex-col h-full">
       <header className="pb-3">
         <Button
-          label="Delete Project"
-          btnClass="btn-red ml-auto"
+          label="Delete project"
+          btnClass="btn-red ml-auto  lg:invisible"
           handleClick={() => deleteProject(projectId)}
           id={undefined}
         />
