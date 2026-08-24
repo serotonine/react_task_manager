@@ -4,7 +4,7 @@ import Button from "./Button";
 export default function SidebarProjectItem({ project, selectedProject }) {
   const { selectProject, deleteProject } = useTaskManager();
   const active =
-    selectedProject && project.id == selectedProject.id ? true : false;
+    selectedProject && project.id === selectedProject.id ? true : false;
 
   return (
     <div
@@ -29,7 +29,6 @@ export default function SidebarProjectItem({ project, selectedProject }) {
             e.stopPropagation();
             deleteProject(project.id);
           }}
-          id={undefined}
         />
       )}
     </div>

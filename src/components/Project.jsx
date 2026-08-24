@@ -1,7 +1,7 @@
 import { useTaskManager } from "../store/task-manager-context";
 import Tasks from "./Tasks";
 import Button from "./Button";
-export default function Project({ addTask, deleteTask }) {
+export default function Project() {
   const { selectedProject, deleteProject } = useTaskManager();
   const {
     id: projectId,

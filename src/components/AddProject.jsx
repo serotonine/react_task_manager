@@ -1,11 +1,12 @@
-import {TaskManagerContext} from "../store/task-manager-context.jsx";
+import { useTaskManager } from "../store/task-manager-context.jsx";
 import Input from "./Input";
 import Button from "./Button";
-import { useRef, useContext } from "react";
+import { useRef } from "react";
 import { nanoid } from "nanoid";
+
 export default function AddProject() {
   const form = useRef();
-  const { addProject, switchComponentDisplay } = useContext(TaskManagerContext);
+  const { addProject, switchComponentDisplay } = useTaskManager();
 
   // Events.
   function saveProject(e) {
@@ -26,12 +27,12 @@ export default function AddProject() {
     }
     addProject(data);
   }
-  
+
   function cancelProject(e) {
     e.preventDefault();
     form.current.reset();
     switchComponentDisplay(0);
- }
+  }
 
   return (
     <section>
@@ -39,17 +40,16 @@ export default function AddProject() {
       <form ref={form} className="lg:max-w-fit">
         <div className="pb-4">
           <Input label="Name" id="title" />
-          <Input type="date" label="Deadline" id="deadline" ref={undefined} />
-          <Input
-            isTextArea={true}
-            label="Description"
-            id="description"
-            ref={undefined}
-          />
+          <Input type="date" label="Deadline" id="deadline" />
+          <Input isTextArea={true} label="Description" id="description" />
         </div>
         <div className="flex justify-end gap-4">
-          <Button btnClass="btn-green" label="Save" handleClick={saveProject}/>
-          <Button btnClass="btn-neutral" label="Cancel" handleClick={cancelProject}/>
+          <Button btnClass="btn-green" label="Save" handleClick={saveProject} />
+          <Button
+            btnClass="btn-neutral"
+            label="Cancel"
+            handleClick={cancelProject}
+          />
         </div>
       </form>
     </section>
