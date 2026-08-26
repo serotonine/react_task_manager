@@ -39,7 +39,7 @@ export default function AddProject() {
       <h1 className="tm_header-bottom mb-6">New Project</h1>
       <form ref={form} className="lg:max-w-fit">
         <div className="pb-4">
-          <Input label="Name" id="title" />
+          <Input label="Name" id="title" autoFocus />
           <Input type="date" label="Deadline" id="deadline" />
           <Input isTextArea={true} label="Description" id="description" />
         </div>
